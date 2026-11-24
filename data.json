@@ -1,0 +1,6 @@
+{"brand":"examplebrand","sample":true,"note":"SAMPLE DATA so the dashboard has something to show. Run track.js to replace it with your own results.","results":[
+{"run":"2026-11-01T09:00:00Z","engine":"openai","prompt":"Best CRM for a small agency?","mentioned":false,"competitorsMentioned":["HubSpot","Pipedrive"],"competitorsAhead":["HubSpot","Pipedrive"],"citedUrls":[],"citationCount":0},
+{"run":"2026-11-01T09:00:00Z","engine":"perplexity","prompt":"Best CRM for a small agency?","mentioned":true,"competitorsMentioned":["HubSpot"],"competitorsAhead":["HubSpot"],"citedUrls":["https://examplebrand.com/crm"],"citationCount":6},
+{"run":"2026-11-08T09:00:00Z","engine":"openai","prompt":"Best CRM for a small agency?","mentioned":true,"competitorsMentioned":["HubSpot"],"competitorsAhead":["HubSpot"],"citedUrls":[],"citationCount":0},
+{"run":"2026-11-08T09:00:00Z","engine":"perplexity","prompt":"Best CRM for a small agency?","mentioned":true,"competitorsMentioned":["HubSpot"],"competitorsAhead":[],"citedUrls":["https://examplebrand.com/crm"],"citationCount":5},
+{"run":"2026-11-08T09:00:00Z","engine":"anthropic","prompt":"Best CRM for a small agency?","mentioned":false,"competitorsMentioned":["HubSpot","Zoho"],"competitorsAhead":["HubSpot","Zoho"],"citedUrls":[],"citationCount":0}]}

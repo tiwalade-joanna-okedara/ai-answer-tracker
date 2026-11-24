@@ -1,0 +1,11 @@
+{
+  "brand": "Acme",
+  "aliases": ["acme.com", "Acme HQ"],
+  "competitors": ["HubSpot", "Zoho", "Pipedrive", "Notion"],
+  "prompts": [
+    "What is the best CRM for a small agency in Nigeria?",
+    "Which all-in-one tool can a freelancer use for clients, invoices and projects?",
+    "Recommend affordable business software for service businesses in Africa."
+  ],
+  "engines": ["openai", "anthropic", "perplexity"]
+}

@@ -1,0 +1,13 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI answer tracker: is your brand in the answer?</title><link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header class="top"><h1>AI answer tracker 🔎</h1><a href="https://github.com/tiwalade-joanna-okedara/ai-answer-tracker">GitHub</a></header>
+<p class="tag">Ask ChatGPT, Claude and Perplexity the questions your buyers ask. See if your brand gets named, who gets named first, and who gets cited.</p>
+<div id="sample"></div><div class="card row" id="stats"></div><div class="card"><h3>By engine</h3><table id="eng"></table></div><div class="card"><h3>Every answer</h3><table id="all"></table></div>
+<footer>Made by <a href="https://github.com/tiwalade-joanna-okedara">Tiwalade Joanna Okedara-Kalu</a> · MIT licence</footer></div><script>
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+fetch('data.json').then(r=>r.json()).then(d=>{if(d.sample)document.getElementById('sample').innerHTML=`<div class="card"><span class="pill warn">Sample data</span> ${esc(d.note)}</div>`;
+ const R=d.results,pct=a=>a.length?Math.round(a.filter(r=>r.mentioned).length/a.length*100)+'%':'-';
+ document.getElementById('stats').innerHTML=`<div><div class="muted">Answers checked</div><b style="font-size:28px">${R.length}</b></div><div><div class="muted">${esc(d.brand)} named</div><b style="font-size:28px">${pct(R)}</b></div><div><div class="muted">Times cited with a link</div><b style="font-size:28px">${R.filter(r=>r.citedUrls.length).length}</b></div>`;
+ const E=[...new Set(R.map(r=>r.engine))];document.getElementById('eng').innerHTML='<tr><th>Engine</th><th>Named</th><th>Most often ahead of you</th></tr>'+E.map(e=>{const x=R.filter(r=>r.engine===e),c={};x.forEach(r=>r.competitorsAhead.forEach(k=>c[k]=(c[k]||0)+1));const top=Object.entries(c).sort((a,b)=>b[1]-a[1])[0];return `<tr><td>${e}</td><td>${pct(x)}</td><td>${top?esc(top[0]):'-'}</td></tr>`}).join('');
+ document.getElementById('all').innerHTML='<tr><th>Date</th><th>Engine</th><th>Prompt</th><th>Named?</th><th>Ahead of you</th></tr>'+R.slice().reverse().map(r=>`<tr><td>${r.run.slice(0,10)}</td><td>${r.engine}</td><td>${esc(r.prompt)}</td><td>${r.mentioned?'<span class="pill good">Yes</span>':'<span class="pill bad">No</span>'}</td><td>${esc(r.competitorsAhead.join(', ')||'-')}</td></tr>`).join('');});
+</script></body></html>
